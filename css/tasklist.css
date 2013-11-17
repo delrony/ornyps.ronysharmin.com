@@ -1,0 +1,49 @@
+/* Color Variables
+@colordef #a9a9a9 gray
+@colordef #E3E4E5 light gray
+@colordef #EADA81 yellow
+*/
+
+
+/* @group tasklist style in ToDo App
+----------------------------------------------------------------------*/
+/* @todo border-radius: Add browser prefix for different browser */
+ul#tasklist {
+	border: 1px solid #a9a9a9;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-top: 10px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+ul#tasklist li {
+	border-bottom: 1px solid #a9a9a9;
+	padding: 10px;
+	background-color: #E3E4E5;
+}
+
+ul#tasklist li:last-child {
+	border-bottom: none;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+ul#tasklist li:first-child {
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+ul#tasklist li:nth-child(2n) {
+	background-color: #EADA81;
+}
+
+

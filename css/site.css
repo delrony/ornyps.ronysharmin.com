@@ -1,0 +1,230 @@
+/* @group fonts
+----------------------------------------------------------------------*/
+@font-face {
+    font-family: 'mukti_narrowregular';
+    src: url('../fonts/mukti/muktinarrow-webfont.eot');
+    src: url('../fonts/mukti/muktinarrow-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/mukti/muktinarrow-webfont.woff') format('woff'),
+         url('../fonts/mukti/muktinarrow-webfont.ttf') format('truetype'),
+         url('../fonts/mukti/muktinarrow-webfont.svg#mukti_narrowregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* @group general styles
+----------------------------------------------------------------------*/
+body {
+  font-family:      Verdana, Arial, Times, sans-serif;
+  font-size:        small;
+  margin:           0px;
+}
+
+header {
+	background-color: #270CD6;
+	color: white;
+	height: 4em;
+	padding: 5px 0px 5px 5px;
+	font-family: 'Gravitas One', cursive;
+}
+
+footer {
+	color: white;
+	text-align: center;
+	font-size: 0.8em;
+	background-color: #270CD6;
+}
+
+/* We will use rounded header and footer only for jello layout*/
+@media screen and (min-width: 961px) {
+	header {
+		-webkit-border-top-left-radius: 15px;
+		-webkit-border-top-right-radius: 15px;
+		-moz-border-radius-topleft: 15px;
+		-moz-border-radius-topright: 15px;
+		border-top-left-radius: 15px;
+		border-top-right-radius: 15px;
+	}
+
+	footer {
+		-webkit-border-bottom-right-radius: 15px;
+		-webkit-border-bottom-left-radius: 15px;
+		-moz-border-radius-bottomright: 15px;
+		-moz-border-radius-bottomleft: 15px;
+		border-bottom-right-radius: 15px;
+		border-bottom-left-radius: 15px;
+	}
+}
+
+/* @group page structure
+----------------------------------------------------------------------*/
+/*jello layout from 960px*/
+@media screen and (min-width:961px) {
+	#allcontent {
+		width: 960px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+/*Below 960px, we use flexible grid layout*/
+@media screen and (max-width:960px) {
+	#allcontent {
+		width: 100%;
+	}
+}
+
+/*And we use table layout to make it 3-column layout*/
+div#tableContainer {
+	display: table;
+	width: 100%;
+}
+
+div#tableRow {
+	display: table-row;
+}
+
+nav#mainNav, section#content, aside {
+	display: table-cell;
+}
+
+nav#mainNav, aside {
+	width: 12.5%;
+}
+
+/*But if the device is less than 480 px then we use one-column layout*/
+/*The same is true for 640px in portrait orientation*/
+@media screen and (max-width: 480px), screen and (orientation: portrait) and (max-width: 640px) {
+	div#tableContainer, div#tableRow, nav#mainNav, section#content, aside {
+		width: 100%;
+		display: block;
+	}
+}
+
+/* @group Page components
+----------------------------------------------------------------------*/
+header h1 {
+	text-align: center;
+	width: 6em;
+	margin: 0.35em auto auto auto;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	background-color: #676CDB;
+}
+
+nav#mainNav {
+	background-color: #EAE8F9;
+}
+
+section#content {
+	padding: 5px;
+}
+
+section h1 {
+	margin: 0px;
+}
+
+aside {
+	background-color: #EAE8F9;
+	padding: 5px;
+	font-size: 0.8em;
+}
+
+aside ul {
+	list-style-type: none;
+	padding: 0px;
+}
+
+.bangla {
+	font-family: mukti_narrowregular;
+}
+
+/* @group navigation, Main Menu
+----------------------------------------------------------------------*/
+nav#mainNav ul {
+	list-style-type: none;
+	padding: 5px 0px;
+}
+
+nav#mainNav li a:link, nav#mainNav li a:visited {
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+nav#mainNav li.selected, nav#mainNav li:hover {
+	background-color: #BACCE0;
+}
+
+nav#mainNav ul li {
+	padding: 5px 10px;	
+}
+
+/* place the main navigation under header - horizontal menu*/
+@media screen and (max-width: 480px), screen and (orientation: portrait) and (max-width: 640px) {
+	nav#mainNav {
+		min-height: 30px;
+		background-color: white;
+		border-bottom: 1px solid black;
+	}
+
+	nav#mainNav ul li {
+		width: 25%;
+		display: block;
+		float: left;
+		padding: 0.25em 0;
+		text-align: center;
+	}
+
+	nav#mainNav li a:link, nav#mainNav li a:visited {
+		text-decoration: underline;
+	}
+
+	nav#mainNav, section#content, aside {
+		clear: both;
+	}
+}
+
+/* @group navigation, Links above footer in index page
+----------------------------------------------------------------------*/
+
+@media screen and (min-width: 641px) {
+	nav#front-nav {
+		display: block;
+		background-color: white;
+		width: 100%;
+		margin-top: 30px;
+	}
+
+	nav#front-nav ul {
+		list-style-type: none;
+		padding: 5px 0px 5px 0px;
+		text-align: center;
+	}
+
+	nav#front-nav ul li {
+		display: inline;
+		padding: 5px 10px 5px 10px;
+		margin-left: 20px;
+		margin-right: 20px;
+		background-color: #270CD6;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+	}
+
+	nav#front-nav ul li a {
+		color: white;
+		text-decoration: none;
+		font-weight: bold;
+	}
+}
+
+/*Under 640px, we don't show the lower navigation button*/
+@media screen and (max-width: 640px) {
+	nav#front-nav {
+		display: none;
+	}
+}
+

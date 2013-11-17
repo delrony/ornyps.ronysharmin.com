@@ -1,0 +1,138 @@
+<project name="ornyps" basedir=".">
+    <property name="root" location=".." />
+    <property name="publish" location="${root}/publish" />
+    <property name="js" location="${root}/js" />
+    <property name="jsconcat" location="${publish}/js/concat" />
+    <property name="jsmin" location="${publish}/js" />
+    <property name="css" location="${root}/css" />
+    <property name="cssmin" location="${publish}/css" />
+    <property name="compressor"  location="${root}/build/yuicompressor-2.4.7.jar"/>
+    
+    <target name="show-root-path">
+        <echo message="${root}"/>        
+    </target>
+
+    <!-- concateneting javascripts for todo app -->
+    <target name="concat-js-todo">
+        <concat destfile="${jsconcat}/todo-concat.js" encoding="UTF-8">
+            <filelist dir="${js}" files="css3-mediaqueries.js"></filelist>
+            <filelist dir="${js}" files="localstore.js, tasklist.js"></filelist>
+        </concat>
+    </target>
+    
+    <!-- concateneting javascripts for Image Filter app -->
+    <target name="concat-js-img_filter">
+        <concat destfile="${jsconcat}/img_filter-concat.js" encoding="UTF-8">
+            <filelist dir="${js}" files="css3-mediaqueries.js"></filelist>
+            <filelist dir="${js}" files="image_filter.js"></filelist>
+        </concat>
+    </target>
+
+    <!-- copying other helper js files to concat directory, so that we can execute minify command on them -->
+    <target name="concat-js-single">
+        <copy todir="${jsconcat}" encoding="UTF-8">
+            <filelist dir="${js}" files="css3-mediaqueries.js"></filelist>
+            <filelist dir="${js}" files="viewport.js"></filelist>
+            <globmapper from="*.js" to="*-concat.js"/>
+        </copy>
+    </target>
+
+    <!-- minimize all javascript files from concat directory -->
+    <target name="minify-js">
+        <apply executable="java" parallel="false" dest="${jsmin}" taskname="yui">
+            <fileset dir="${jsconcat}">
+                <patternset>
+                    <include name="*-concat.js"/>
+                </patternset>
+            </fileset>
+            <arg line="-jar"></arg>
+            <arg path="${compressor}"></arg>
+            <arg line="--charset UTF-8"/>
+            <arg line="-v"></arg>
+            <srcfile/>
+            <arg line="-o"></arg>
+            <mapper type="glob" from="*-concat.js" to="*-min.js"></mapper>
+            <targetfile/>
+       </apply>       
+    </target>
+    
+    <!-- copying jquery and other libraries to the publish folder -->
+    <target name="publish-js-libs">
+        <copy todir="${publish}/js/libs" encoding="UTF-8">
+            <filelist dir="${js}/libs" files="jquery.min.js,modernizr.min.js"></filelist>
+        </copy>
+    </target>
+    
+    <!-- minimize all css files from concat directory -->
+    <target name="minify-css">
+        <apply executable="java" parallel="false" dest="${cssmin}" taskname="yui">
+            <fileset dir="${css}">
+                <patternset>
+                    <include name="*.css"/>
+                </patternset>
+            </fileset>
+            <arg line="-jar"></arg>
+            <arg path="${compressor}"></arg>
+            <arg line="--charset UTF-8"/>
+            <arg line="-v"></arg>
+            <srcfile/>
+            <arg line="-o"></arg>
+            <mapper type="glob" from="*.css" to="*-min.css"></mapper>
+            <targetfile/>
+       </apply>       
+    </target>
+
+    <!-- copying html files, fonts and images directory to the publish folder -->
+    <target name="publish-static-file">
+        <copy todir="${publish}">
+            <fileset dir="${root}/">
+                <include name="images/**"/>
+                <include name="fonts/**"/>
+                <include name="demos/**"/>
+                <include name="*.html"/>
+            </fileset>
+        </copy>
+    </target>
+    
+    <!-- Merging multiple js file to a single concatenated and minified js file -->
+    <target name="merge-multiline">
+        <replaceregexp match="\&lt;!\-\-merge start \(([\w\-\./]+\.js)\).+?merge end\-\-\&gt;" replace="\&lt;script src='\1'\&gt;\&lt;\/script\&gt;" byline="false" flags="gis">
+            <fileset dir="${publish}/">
+                <include name="**/*.html"/>
+            </fileset>
+        </replaceregexp>
+    </target>
+
+    <!-- replace single line js or css file name with their minified file name -->
+    <target name="correct-links">
+        <replaceregexp match="(css|js)/([\w\-]+)\.(css|js)" replace="\1/\2-min.\3" byline="true" encoding="utf-8">
+            <fileset dir="${publish}/">
+                <include name="**/*.html"/>
+            </fileset>
+        </replaceregexp>
+    </target>
+
+    <!-- deleting publish folder -->
+    <target name="clean-publish">
+        <delete dir="${publish}"/>
+    </target>
+
+    <!-- deleting js concat folder -->
+    <target name="clean-concat">
+        <delete dir="${jsconcat}"/>
+    </target>
+
+    <!-- Initiating build - making concat and min directories -->
+    <target name="init">
+        <mkdir dir="${publish}"/>
+        <mkdir dir="${jsconcat}"/>
+        <mkdir dir="${jsmin}"/>
+        <mkdir dir="${publish}/js/libs"/>
+        <mkdir dir="${cssmin}"/> 
+    </target>
+
+    <target name="build-js" depends="concat-js-todo, concat-js-img_filter, concat-js-single, minify-js, publish-js-libs"></target>
+    
+    <target name="build" depends="clean-publish, init, build-js, minify-css, clean-concat, publish-static-file, merge-multiline, correct-links"></target>
+
+</project>

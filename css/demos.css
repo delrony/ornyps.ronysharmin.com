@@ -1,0 +1,59 @@
+/* @group sliding description
+----------------------------------------------------------------------*/
+#content > figure {
+	position: relative;
+	overflow: hidden;
+	border: 1px solid black;
+	width: 320px;
+}
+
+@media screen and (max-width: 480px), screen and (orientation: portrait) and (max-width: 640px) {
+	#content > figure {
+		margin-left: 0;
+	}
+}
+
+#content > figure img {
+	max-width: 100%;
+	display: block;
+}
+
+#content figcaption {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background-color: rgba(58,63,67,.8);
+	padding: 2px;
+	color: #fff;
+	font-size: 0.87em;
+
+	-webkit-transform: translateX(100%);
+	-moz-transform: translateX(100%);
+	-ms-transform: translateX(100%);
+	-o-transform: translateX(100%);
+	transform: translateX(100%);
+
+	-webkit-transition: all 350ms;
+	-moz-transition: all 350ms;
+	-o-transition: all 350ms;
+	transition: all 350ms;
+}
+
+#content > figure:hover figcaption {
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	-ms-transform: translateX(0);
+	-o-transform: translateX(0);
+	transform: translateX(0);
+}
+
+#content h4 a:link, #content h4 a:hover, #content h4 a:visited {
+	color: black;
+}
+
+#content figcaption a:link, #content figcaption a:hover, #content figcaption a:visited {
+	color: white;
+	font-weight: bold;
+}

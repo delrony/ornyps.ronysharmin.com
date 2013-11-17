@@ -1,0 +1,40 @@
+/* @group Forms
+----------------------------------------------------------------------*/
+@media screen and (min-width:841px) {
+	form.table_layout {
+		display: table;
+		padding: 10px;
+	}
+
+	div.ftableRow {
+		display: table-row;
+	}
+
+	div.ftableRow > label, div.ftableRow > input {
+		display: table-cell;
+		vertical-align: top;
+		padding: 3px;
+		margin-bottom: 5px;
+	}
+
+	div.ftableRow label:first-child {
+		text-align: right;
+	}
+
+	form textarea {
+		display: table-cell;
+		width: 500px;
+		height: 200px;
+	}
+}
+
+@media screen and (max-width:840px) {
+	label, input {
+		display: block;
+	}
+
+	form textarea {
+		width: 70%;
+		height: 120px;
+	}
+}

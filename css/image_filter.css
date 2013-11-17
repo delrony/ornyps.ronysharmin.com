@@ -1,0 +1,93 @@
+div#allcontent {
+	position: relative;
+}
+
+section#content {
+	border-right: 1px solid #EAE8F9;
+}
+
+/*For large screen, we keep the filter links to the right side of the image (verticle)*/
+@media screen and (min-width:961px) {
+	div#effects {
+		position: absolute;
+		top: 115px;
+		left: 730px;
+		width: 15%;
+	}
+
+	nav#filters {
+		background-color: white;
+	}
+
+	div#effects {
+		text-align: center;
+	}
+
+	nav#filters li {
+		padding: 10px;
+		margin-top: 10px;
+		-webkit-border-radius: 15px;
+		-moz-border-radius: 15px;
+		border-radius: 15px;
+		border: 1px solid black;
+		background-color: #cccccc;
+		font-weight: bold;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+}
+
+div#effects h3 {
+	margin:0;
+	border-bottom: 1px solid black;
+}
+
+
+nav#filters ul {
+	list-style-type: none;
+}
+
+
+figure {
+	position: relative;
+}
+
+figure canvas {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+nav#filters li.used_filter {
+	background-color: #BACCE0;
+}
+
+nav#filters li.unused_filter {
+	background-color: #cccccc;
+}
+
+/*For small screen, we keep the filter links under the image (horizontally)*/
+@media screen and (max-width:960px) {
+	nav#filters li {
+		padding: 10px;
+		margin-top: 10px;
+		border: 1px solid black;
+		background-color: #cccccc;
+		font-weight: bold;
+		text-decoration: underline;
+		cursor: pointer;
+		float: left;
+	}
+
+	hr {
+		display: none;
+	}
+
+	h3 {
+		padding-top: 20px;
+		clear: both;
+		border-bottom: 1px solid black;
+	}
+
+}

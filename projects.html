@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+	<title>Ornyps - We build Web apps</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="js/css3-mediaqueries.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Gravitas+One' rel='stylesheet' type='text/css'>
+	<link type="text/css" rel="stylesheet" href="css/site.css">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+</head>
+<body>
+	<div id="allcontent">
+		<header>
+			<h1><span>Ornyps</span></h1>
+		</header>
+		<div id="tableContainer">
+			<div id ="tableRow">
+				<nav id="mainNav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="products.html">Apps</a></li>
+						<li class="selected"><a href="projects.html">Portfolio</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</nav>
+				<section id="content">
+					<div id="accordion">
+						<h3><b>MA Energy Limited</b>, London, England</h3>
+						<div>
+							<p>Developed a web based billing system application for the company. Responsibilities include implementation of the billing logic by using the readings of different types of meters, administrating code base, testing and documenting. In this project, Ruby on Rails framework was used to implement the web based billing system and Perl was used to parse the data flow files. Used MySQL database in the backend and jQuery in the frontend with HTML and CSS. For version controlling of the source code GIT was used. The project was documented by Rdoc and Perlpod. Cucumber, Rspec and FactoryGirl were used to write different test cases.</p>
+							<p><b><small>Since November, 2012</small></b></p>
+						</div>
+
+						<h3><b>Inatec Solutions GmbH</b>, Frankfurt, Germany</h3>
+						<div>
+							<p>Maintaining and extending company's Payment Gateway. The range of activities covers the integration of other Payment Gateways, new Payment methods (e.g. Credit Card, ELV, ACH etc) and Payment Feature (e.g. Fraud Detection, Address verification etc) with the Payment Gateway. Used Perl, PHP and Java for various integration and Sybase as backend database. Administrating the code base of the payment gateway by using CVS. Also providing 2nd Level IT support.</p>
+							<p><b><small>Since July, 2005</small></b></p>
+						</div>
+
+						<h3><b>Iponics Bangladesh Limited</b>, Dhaka, Bangladesh</h3>
+						<div>
+							<p>Performed analysis and development on web based software and e-commerce solutions for various types of organizations. Developed websites include online shops, job sites, travel sites, online file storage system etc.</p>
+							<p><b><small>August,2000 to February, 2002</small></b></p>
+						</div>
+					</div>
+				</section>
+				<aside>
+					<p>
+						<h3>Opening times</h3>
+						<ul>
+							<li>Monday - Friday: <br>10:00 - 17:00</li>
+							<li>Saturday: <br>14:00 - 17:00</li>
+						</ul>
+					</p>
+					<p>
+						<h3>Address</h3>
+						Test street 22<br>
+						PO. 45364, Testacity<br>
+						Country
+					</p>
+				</aside>
+			</div>
+		</div>
+		<footer>
+			All rights reserved &copy; 2013
+		</footer>
+	</div>
+	<script src="js/viewport.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script>
+		$(function() {
+			var icons = {
+				header: "ui-icon-circle-arrow-e",
+				activeHeader: "ui-icon-circle-arrow-s"
+			};
+			$( "#accordion" ).accordion({
+				icons: icons
+			});
+			$( "#toggle" ).button().click(function() {
+			if ( $( "#accordion" ).accordion( "option", "icons" ) ) {
+				$( "#accordion" ).accordion( "option", "icons", null );
+			} else {
+				$( "#accordion" ).accordion( "option", "icons", icons );
+			}
+			});
+		});
+	</script>
+</body>
+</html>

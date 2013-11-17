@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<title>Ornyps - We build Web apps</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='http://fonts.googleapis.com/css?family=Gravitas+One' rel='stylesheet' type='text/css'>
+	<link type="text/css" rel="stylesheet" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="../css/image_filter.css">
+	<script src="../js/libs/jquery.min.js"></script>
+        <!--MERGE START (../js/img_filter.js) -->
+        <script src="../js/css3-mediaqueries.js"></script>
+	<script src="../js/image_filter.js"></script>
+        <!-- MERGE END-->
+</head>
+<body>
+	<div id="allcontent">
+		<header>
+			<h1><span>Ornyps</span></h1>
+		</header>
+		<div id="tableContainer">
+			<div id ="tableRow">
+				<nav id="mainNav">
+					<ul>
+						<li><a href="../index.html">Home</a></li>
+						<li><a href="../products.html">Apps</a></li>
+						<li><a href="../projects.html">Portfolio</a></li>
+						<li><a href="../contact.html">Contact</a></li>
+					</ul>
+				</nav>
+				<section id="content">
+					<h1>Image Filter</h1>
+					<figure>
+						<img id ="processImage" src="../images/image1c.jpg" alt="Image, where the filters will be applied">
+						<canvas id="buffer" width="480" height="480"></canvas>
+						<canvas id="display" width="480" height="480"></canvas>
+					</figure>
+					<div id="effects">
+						<h3>Select Effects</h3>
+						<nav id="filters">
+							<ul>
+								<li>Western</li>
+								<li>Noir</li>
+								<li>Sci-Fi</li>
+								<li>Cartoon</li>
+								<li class="used_filter">Normal</li>
+							</ul>
+						</nav>
+					</div>
+					<hr>
+					<h3>Select an image</h3>
+					<p id="thumbnails">
+						<img src="../images/image1t.jpg" alt="Thumbnail Image 1">
+						<img src="../images/image2t.jpg" alt="Thumbnail Image 2">
+						<img src="../images/image3t.jpg" alt="Thumbnail Image 3">
+					</p>
+				</section>
+				
+			</div>
+		</div>
+		<footer>
+			All rights reserved &copy; 2013
+		</footer>
+	</div>
+	<script src="../js/viewport.js"></script>
+</body>
+</html>
