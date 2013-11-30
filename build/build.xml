@@ -15,16 +15,7 @@
     <!-- concateneting javascripts for todo app -->
     <target name="concat-js-todo">
         <concat destfile="${jsconcat}/todo-concat.js" encoding="UTF-8">
-            <filelist dir="${js}" files="css3-mediaqueries.js"></filelist>
             <filelist dir="${js}" files="localstore.js, tasklist.js"></filelist>
-        </concat>
-    </target>
-    
-    <!-- concateneting javascripts for Image Filter app -->
-    <target name="concat-js-img_filter">
-        <concat destfile="${jsconcat}/img_filter-concat.js" encoding="UTF-8">
-            <filelist dir="${js}" files="css3-mediaqueries.js"></filelist>
-            <filelist dir="${js}" files="image_filter.js"></filelist>
         </concat>
     </target>
 
@@ -33,6 +24,7 @@
         <copy todir="${jsconcat}" encoding="UTF-8">
             <filelist dir="${js}" files="css3-mediaqueries.js"></filelist>
             <filelist dir="${js}" files="viewport.js"></filelist>
+            <filelist dir="${js}" files="image_filter.js"></filelist>
             <globmapper from="*.js" to="*-concat.js"/>
         </copy>
     </target>
@@ -131,7 +123,7 @@
         <mkdir dir="${cssmin}"/> 
     </target>
 
-    <target name="build-js" depends="concat-js-todo, concat-js-img_filter, concat-js-single, minify-js, publish-js-libs"></target>
+    <target name="build-js" depends="concat-js-todo, concat-js-single, minify-js, publish-js-libs"></target>
     
     <target name="build" depends="clean-publish, init, build-js, minify-css, clean-concat, publish-static-file, merge-multiline, correct-links"></target>
 
